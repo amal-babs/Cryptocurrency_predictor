@@ -1,0 +1,30 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif; /* Adjust font as needed */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  background-color: #f8f8f8; /* Background color */
+}
+
+/* Heading */
+.heading {
+  text-align: center; /* Center align heading */
+  margin-top: 50px; /* Adjust margin */
+  font-size: 36px; /* Adjust font size */
+  font-weight: bold; /* Make the heading bold */
+  color: #333; /* Text color */
+}
+
+/* Image */
+.img-container {
+  display: flex; /* Use flexbox for image alignment */
+  justify-content: center; /* Center align horizontally */
+  margin-top: 20px; /* Adjust margin */
+}
+
+.img-container img {
+  max-width: 100%; /* Ensure image does not exceed container width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}

@@ -1,0 +1,29 @@
+/* compare.css */
+
+/* Styles for the content container */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styles for the form */
+.form {
+    margin-bottom: 20px;
+}
+
+/* Styles for the submit button */
+.submit_btn {
+    margin-top: 10px;
+}
+
+/* Styles for the chart container */
+.chart_div {
+    margin-top: 20px;
+}
+
+/* Styles for the chart canvas */
+.myChart {
+    width: 100%;
+    height: 400px;
+}

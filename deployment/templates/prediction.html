@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}
+combined Analysis
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+    <title>Cryptocurrency Predictions</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ethereum.css') }}">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <div class="content">
+        <h1>compare</h1>
+        <form action="{{ url_for('prediction_page') }}" method="POST" class="form">
+            <select name="time_frame">
+                <option name="daily" value="daily">Daily</option>
+                <option name="monthly" value="monthly">Monthly</option>
+            </select>
+
+            <label for="start" class="form-label">Enter Start date</label>
+            <input type="date" name="start">
+            
+            <label for="end" class="form-label">Enter End date</label>
+            <input type="date" name="end"> <br />
+
+            <input type="submit" name="submit" value="Submit" class="btn btn-dark submit_btn">
+        </form>
+
+        {% if check  %}
+        <div class="chart_div">
+            <canvas id="combined_EthereumChart" height="100"
+            width="300" class="myChart" ></canvas>
+
+            <br>
+            <canvas id="combined_bitcoin" height="100"
+            width="300" class="myChart" ></canvas>
+
+
+            <br>
+            <script>
+
+                var labels = [
+                    {% for item in labels %}
+                        "{{ item }}",
+                    {% endfor %}
+                ]
+
+                var predictions = [
+                    {% for item in predictions %}
+                         "{{ item }}",
+                    {% endfor %}
+                ]
+                
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                    label: 'Ethereum Predictions',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: predictions,
+                    }]
+                };
+
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {}
+                };
+
+
+                const myChart = new Chart(
+                        document.getElementById('combined_EthereumChart'),
+                        config
+                    );
+
+                    //bitcoin
+
+                    var labels1 = [
+                        {% for item in labels1 %}
+                            "{{ item }}",
+                        {% endfor %}
+                    ]
+
+                    var predictions1 = [
+                        {% for item in predictions1 %}
+                             "{{ item }}",
+                        {% endfor %}
+                    ]
+                    
+                    const data1 = {
+                        labels: labels1,
+                        datasets: [{
+                            label: 'Bitcoin Predictions',
+                            backgroundColor: 'rgb(75, 192, 192)', // Green color for background
+                            borderColor: 'rgb(75, 192, 192)', // Green color for border
+                            data: predictions1,
+                        }]
+                    };
+
+                    const config1 = {
+                        type: 'line',
+                        data: data1,
+                        options: {}
+                    };
+
+                    const myChart1 = new Chart(
+                            document.getElementById('combined_bitcoin'),
+                            config1
+                        );
+
+            </script>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
